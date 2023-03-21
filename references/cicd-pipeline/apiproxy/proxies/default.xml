@@ -16,6 +16,16 @@
 -->
 
 <ProxyEndpoint name="default">
+  <DefaultFaultRule name="DefaultFaultRule">
+        <Step>
+            <Name>Set-CORS-Response-Headers</Name>
+        </Step>
+        <Step>
+            <Name>Set-OPTIONS-Status-Code</Name>
+            <Condition>request.verb = "OPTIONS"</Condition>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+  </DefaultFaultRule>
   <PreFlow name="PreFlow">
     <Response>
       <Step>
@@ -41,6 +51,16 @@
         </Step>
       </Response>
     </Flow>
+    <Flow name="OptionsPreFlight">
+            <Description>OPTIONS Pre-flight for CORS handling</Description>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>Set-CORS-Response-Headers</Name>
+                </Step>
+            </Response>
+            <Condition>request.verb == "OPTIONS"</Condition>
+    </Flow>
     <Flow name="unknown-path-suffix">
       <Request>
         <Step>
@@ -49,10 +69,18 @@
       </Request>
     </Flow>
   </Flows>
-  <PostFlow name="PostFlow"/>
+  <PostFlow name="PostFlow">
+    <Response>
+      <Step>
+        <Name>Set-CORS-Response-Headers</Name>
+      </Step>
+    </Response>
+  </PostFlow>
   <HTTPProxyConnection>
     <BasePath>/airports-cicd/v1</BasePath>
-    <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
+  <RouteRule name="NoRoute">
+     <Condition>request.verb == "OPTIONS"</Condition>
+  </RouteRule>
   <RouteRule name="no-target" />
 </ProxyEndpoint>

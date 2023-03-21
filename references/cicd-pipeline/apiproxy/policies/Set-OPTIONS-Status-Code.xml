@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Set-OPTIONS-Status-Code">
+    <DisplayName>Set OPTIONS Status Code</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>error.status.code</Name>
+        <Value>200</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
