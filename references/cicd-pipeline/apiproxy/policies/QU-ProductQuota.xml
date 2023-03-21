@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota async="false" continueOnError="false" enabled="false" name="QU-ProductQuota">
+    <DisplayName>QU-ProductQuota</DisplayName>
+    <Allow count="3" countRef="verifyapikey.Verify-API-Key.apiproduct.developer.quota.limit"/>
+    <Interval ref="verifyapikey.Verify-API-Key.apiproduct.developer.quota.interval">1</Interval>
+    <TimeUnit ref="verifyapikey.Verify-API-Key.apiproduct.developer.quota.timeunit">minute</TimeUnit>
+    <Distributed>true</Distributed>
+    <Synchronous>true</Synchronous>
+</Quota>
