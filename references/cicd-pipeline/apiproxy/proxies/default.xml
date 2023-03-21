@@ -52,7 +52,6 @@
   <PostFlow name="PostFlow"/>
   <HTTPProxyConnection>
     <BasePath>/airports-cicd/v1</BasePath>
-    <VirtualHost>secure</VirtualHost>
   </HTTPProxyConnection>
   <RouteRule name="no-target" />
 </ProxyEndpoint>
