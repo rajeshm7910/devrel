@@ -113,6 +113,20 @@ steps:
             -Ddeployment.suffix="$${APIGEE_DEPLOYMENT_SUFFIX}" \
             -Ddeployment.description="CloudRun Build: $BUILD_ID"
         fi
+  #Publish Documentation
+  - name: "gcr.io/cloud-builders/mvn"
+    id: "Publish Documentation"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |-
+        cd "$_WORK_DIR/apiportal"
+        mvn clean install -ntp \
+            -P"dev" \
+            -Dportal.url=https://portal.cs.apigee.net
+            -Dportal.username=any
+            -Dportal.password=any
+            -Dapigee.smartdocs.config.options=create
     # Run integration tests
   - name: node
     id: "Integration Test"

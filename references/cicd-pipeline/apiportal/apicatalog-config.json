@@ -1,0 +1,15 @@
+{
+   "fields":{
+      "field_image": "airports.png",
+      "field_drop_down":"one"
+   },
+   "taxonomy_terms":[
+      {
+         "vocabulary":"api_category",
+         "field":"field_categories",
+         "data":[
+            "Airports"
+         ]
+      }
+   ]
+}
