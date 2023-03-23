@@ -83,6 +83,9 @@
   <PostFlow name="PostFlow">
     <Response>
       <Step>
+         <Name>RemoveICAO</Name>
+      </Step>
+      <Step>
         <Name>Set-CORS-Response-Headers</Name>
       </Step>
     </Response>
