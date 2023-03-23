@@ -42,7 +42,6 @@ paths:
                   $ref: '#/components/schemas/Airport'
       security:
         - api_key: []
-
   /airports/{airportId}:
     get:
       tags:
