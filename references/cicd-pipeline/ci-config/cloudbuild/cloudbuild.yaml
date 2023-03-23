@@ -113,23 +113,6 @@ steps:
             -Ddeployment.suffix="$${APIGEE_DEPLOYMENT_SUFFIX}" \
             -Ddeployment.description="CloudRun Build: $BUILD_ID"
         fi
-  #Publish Documentation
-  - name: "gcr.io/cloud-builders/mvn"
-    id: "Publish Documentation"
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - |-
-        cd "$_WORK_DIR/apiportal"
-        if [ "$BRANCH_NAME" = "main" ]
-        then
-          mvn clean install  \
-            -P"dev" \
-            -Dportal.url="https://portal.cs.apigee.net" \
-            -Dportal.username="any" \
-            -Dportal.password="any" \
-            -Dapigee.smartdocs.config.options="update"
-        fi
     # Run integration tests
   - name: node
     id: "Integration Test"
@@ -155,6 +138,23 @@ steps:
         gs://${PROJECT_ID}_cloudbuild/reports/$BUILD_ID/coverage && \
         gsutil cp ./report.*.html \
         gs://${PROJECT_ID}_cloudbuild/reports/$BUILD_ID
+  #Publish Documentation
+  - name: "gcr.io/cloud-builders/mvn"
+    id: "Publish Documentation"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |-
+        cd "$_WORK_DIR/apiportal"
+        if [ "$BRANCH_NAME" = "main" ]
+        then
+          mvn clean install  \
+            -P"dev" \
+            -Dportal.url="https://portal.cs.apigee.net" \
+            -Dportal.username="any" \
+            -Dportal.password="any" \
+            -Dapigee.smartdocs.config.options="update"
+        fi
 substitutions:
   # Apigee Org for where to deploy to
   _DEPLOYMENT_ORG: my-org
