@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<MonetizationLimitsCheck enabled="true" continueOnError="false" name="monetization-limits-check">
+<MonetizationLimitsCheck enabled="true" continueOnError="false" name="Monetization-Limits-Check">
   <DisplayName>Monetization Limits Check</DisplayName>
   <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
   <FaultResponse>

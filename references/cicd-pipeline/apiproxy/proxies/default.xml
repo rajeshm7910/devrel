@@ -35,7 +35,7 @@
         <Name>QU-ProductQuota</Name>
       </Step>
       <Step>
-        <Name>monetization-limits-check</Name>
+        <Name>Monetization-Limits-Check</Name>
       </Step>
       <Step>
         <Name>Remove-API-Key</Name>
