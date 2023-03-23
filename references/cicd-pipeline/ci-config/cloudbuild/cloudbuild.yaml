@@ -121,7 +121,7 @@ steps:
       - "-c"
       - |-
         cd "$_WORK_DIR/apiportal"
-        if [ "$BRANCH_NAME" = "prod" ]
+        if [ "$BRANCH_NAME" = "main" ]
         then
           mvn clean install  \
             -P"dev" \
