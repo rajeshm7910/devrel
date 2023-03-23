@@ -121,7 +121,13 @@ steps:
       - "-c"
       - |-
         cd "$_WORK_DIR/apiportal"
-        mvn clean install -ntp \
+        mvn clean install p \
+            -P"dev" \
+            -Dportal.url="https://portal.cs.apigee.net" \
+            -Dportal.username="any" \
+            -Dportal.password="any" \
+            -Dapigee.smartdocs.config.options="delete"
+        mvn clean install p \
             -P"dev" \
             -Dportal.url="https://portal.cs.apigee.net" \
             -Dportal.username="any" \

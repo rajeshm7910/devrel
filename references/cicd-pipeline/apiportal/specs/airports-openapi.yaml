@@ -13,6 +13,7 @@ externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
+  - url: https://apigee-gke-example3-sandbox.hybrid-apigee.net/airports-cicd/v1
   - url: https://apigee-gke-example3.hybrid-apigee.net/airports-cicd/v1
 tags:
   - name: airports
