@@ -128,13 +128,7 @@ steps:
             -Dportal.url="https://portal.cs.apigee.net" \
             -Dportal.username="any" \
             -Dportal.password="any" \
-            -Dapigee.smartdocs.config.options="delete"
-          mvn clean install  \
-            -P"dev" \
-            -Dportal.url="https://portal.cs.apigee.net" \
-            -Dportal.username="any" \
-            -Dportal.password="any" \
-            -Dapigee.smartdocs.config.options="create"
+            -Dapigee.smartdocs.config.options="update"
         fi
     # Run integration tests
   - name: node
