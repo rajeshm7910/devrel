@@ -121,18 +121,21 @@ steps:
       - "-c"
       - |-
         cd "$_WORK_DIR/apiportal"
-        mvn clean install  \
+        if [ "$BRANCH_NAME" = "prod" ]
+        then
+          mvn clean install  \
             -P"dev" \
             -Dportal.url="https://portal.cs.apigee.net" \
             -Dportal.username="any" \
             -Dportal.password="any" \
             -Dapigee.smartdocs.config.options="delete"
-        mvn clean install  \
+          mvn clean install  \
             -P"dev" \
             -Dportal.url="https://portal.cs.apigee.net" \
             -Dportal.username="any" \
             -Dportal.password="any" \
             -Dapigee.smartdocs.config.options="create"
+        fi
     # Run integration tests
   - name: node
     id: "Integration Test"
