@@ -93,6 +93,14 @@
       </Step>
     </Response>
   </PostFlow>
+  <PostClientFlow>
+        <Request/>
+        <Response>
+            <Step>
+                <Name>SendTraceToNewRelic</Name>
+            </Step>
+        </Response>
+  </PostClientFlow>
   <HTTPProxyConnection>
     <BasePath>/airports-cicd/v1</BasePath>
   </HTTPProxyConnection>

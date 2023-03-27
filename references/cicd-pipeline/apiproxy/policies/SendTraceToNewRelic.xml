@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="false" name="SendTraceToNewRelic">
+    <DisplayName>SendTraceToNewRelic</DisplayName>
+    <Properties/>
+    <Request clearPayload="false" variable="newrelic-req">
+        <Add>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+                <Header name="Api-Key">NRAK-CRDE9C2BXJPW3XSDB9SX5VN24RT</Header>
+                <Header name="Data-Format">newrelic</Header>
+                <Header name="Data-Format-Version">1</Header>
+            </Headers>
+        </Add>
+        <Set>
+            <Verb>POST</Verb>
+            <Payload>
+{
+  "resourceSpans": [
+{
+   "resource": {
+     "attributes": [
+       {
+         "key": "airports-cicd",
+         "value": {
+           "stringValue": "apigee-runtime"
+         }
+       }
+     ]
+   },
+   "instrumentationLibrarySpans": [
+     {
+       "spans": [
+         {
+           "trace_id": "{traceid}",
+           "span_id": "{span_id}",
+           "parent_span_id": "{parent_span_id}",
+           "name": "{request.uri}",
+           "kind": 2,
+           "start_time_unix_nano": {client.received.start.timestamp}000000,
+           "end_time_unix_nano": {client.sent.end.timestamp}000000,
+           "droppedAttributesCount": 0,
+           "droppedEventsCount": 0,
+           "attributes": [
+              {
+                 "key": "http.host",
+                 "value":{
+                    "string_value": "localhost"
+                 }
+                 },
+                 {
+                 "key": "http.status_code",
+                 "value":{
+                    "string_value": "{response.status.code}"
+                 }
+              },
+              {
+                 "key": "http.method",
+                 "value":{
+                    "string_value": "{request.verb}"
+                 }
+              },
+              {
+                 "key": "http.request_content_length",
+                 "value":{
+                    "string_value": "{request.header.content-length}"
+                 }
+              },
+              {
+                 "key": "http.response_content_length",
+                 "value":{
+                    "string_value": "{response.header.content-length}"
+                 }
+              },
+              {
+                 "key": "http.server_name",
+                 "value":{
+                    "string_value": "{target.host}"
+                 }
+              }
+           ],
+           "events": [
+              {
+                 "time_unix_nano": {system.timestamp}000000,
+                                 "name": "event1",
+                                 "attributes": [
+                                     {
+                                         "key": "exception.message",
+                                         "value":{
+                                            "string_value": "{escapeJSON(EventMessage)}"
+                                            }
+                                     }
+                                 ]
+              }
+           ],             
+              "status": {
+             "code": {response.status.code},
+             "message": "Test"
+           }
+         }
+       ],
+       "instrumentationLibrary": {
+         "name": "local-curl-example"
+       }
+     }
+   ]
+}
+ ]
+}
+         </Payload>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>dyna-res</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://trace-api.newrelic.com/trace/v1</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>
